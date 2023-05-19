@@ -57,7 +57,6 @@ struct Result parse(char *file)
 				  char *index = strtok(&parsing[2], ",");
 				  results.index = (char*)calloc(strlen(index), sizeof(char));
 				  strcpy(results.index, index);
-				  printf("index = %s\n", results.index);
 				  
 				} 
 				
@@ -66,28 +65,24 @@ struct Result parse(char *file)
 				  char *name = strtok(&parsing[2], ",");
 				  results.name = (char*)calloc(strlen(name), sizeof(char));
 				  strcpy(results.name, name);
-				  printf("name = %s\n", results.name);
 				} 
 				else if (strcmp(token, "url") == 0 && results.url == NULL) 
 				{
 				  char *url = strtok(&parsing[2], ",");
 				  results.url = (char*)calloc(strlen(url), sizeof(char));
 				  strcpy(results.url, url);
-				  printf("url = %s\n", results.url);
 				} 
 				else if (strcmp(token, "range") == 0) 
 				{
 				  char *range = strtok(&parsing[2], ",");
 				  results.range = (char*)calloc(strlen(range), sizeof(char));
 				  strcpy(results.range, range);
-				  printf("range = %s\n", results.range);
 				} 
 				else if (strcmp(token, "material") == 0) 
 				{
 				  char *material = strtok(&parsing[2], ",");
 				  results.material = (char*)calloc(strlen(material), sizeof(char));
 				  strcpy(results.material, material);
-				  printf("material = %s\n", results.material);
 				} 
 				
 				else if (strcmp(token, "duration") == 0) 
@@ -95,7 +90,6 @@ struct Result parse(char *file)
 				  char *duration = strtok(&parsing[2], ",");
 				  results.duration = (char*)calloc(strlen(duration), sizeof(char));
 				  strcpy(results.duration, duration);
-				  printf("duration = %s\n", results.duration);
 				}
 				
 				else if (strcmp(token, "casting_time") == 0) 
@@ -103,7 +97,6 @@ struct Result parse(char *file)
 				  char *casting_time = strtok(&parsing[2], ",");
 				  results.casting_time = (char*)calloc(strlen(casting_time), sizeof(char));
 				  strcpy(results.casting_time, casting_time);
-				  printf("casting_time = %s\n", results.casting_time);
 				  
 				}
 				 
@@ -113,7 +106,7 @@ struct Result parse(char *file)
 		}
 	}
 
-	
+	/*
 	free(results.index);
     free(results.name);
     free(results.url);
@@ -126,19 +119,12 @@ struct Result parse(char *file)
 	//free(results.concentration);
 	free(results.casting_time);
 	//free(results.level);
-	
+	*/
 
 	
 	
 	return results;
 }
-
-
-
-
-
-
-
 
     /* Copyright (C) 1992-2023 Free Software Foundation, Inc.
       This file is part of the GNU C Library.
