@@ -80,6 +80,7 @@ int main(void)
 					if( pointer == head )
 					{
 						head = NULL;
+						quit = 1;
 					}
 					free( pointer );
 					//printHead(head);
