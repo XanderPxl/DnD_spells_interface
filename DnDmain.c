@@ -82,7 +82,7 @@ int main(void)
 						head = NULL;
 					}
 					free( pointer );
-					printHead(head);
+					//printHead(head);
 				}
 			}
 			else if ( strcmp(userInput, "exit") == 0)
@@ -132,4 +132,3 @@ void printHead( struct newNode *head )
 	printf("casting_time = %s\n", head->casting_time);
 	printf("---------------------------------------------------------\n");
 }
-
