@@ -40,6 +40,7 @@ int main(void)
 	int quit = 0;
 	char userInput[7] = {0, 0, 0, 0, 0, 0, 0};
 	
+	printHead(head);
 	while (quit != 1)
 	{
 		printf("What do you want to do?\n");
@@ -67,6 +68,8 @@ int main(void)
 				pointer->casting_time = tempResult.casting_time;
 				pointer->next = head->next;
 				head->next = pointer;
+				
+				printHead(head);
 			}
 			if( strcmp(userInput, "delete") == 0)
 			{
@@ -79,11 +82,23 @@ int main(void)
 						head = NULL;
 					}
 					free( pointer );
+					printHead(head);
 				}
 			}
 			else if ( strcmp(userInput, "exit") == 0)
 			{
 				quit = 1;
+				while (head != NULL)
+				{
+					struct newNode *pointer = head->next;
+					head->next = pointer->next;
+					if( pointer == head )
+					{
+						head = NULL;
+					}
+					free( pointer );
+				}
+				
 			}
 		}
 	}
@@ -93,20 +108,28 @@ int main(void)
 	
 	
 	//free(pointer);
+	free(tempResult.index);
+	free(tempResult.name);
+	free(tempResult.url);
+	free(tempResult.range);
+	free(tempResult.material);
+	free(tempResult.duration);
+	free(tempResult.casting_time);
 	
-	free(head);
 	
 	return 0;
 }
 
 void printHead( struct newNode *head )
 {
-	printf("\n index = %s\n", head->index);
-	printf("\n name = %s\n", head->name);
-	printf("\n url = %s\n", head->url);
-	printf("\n range = %s\n", head->range);
-	printf("\n material = %s\n", head->material);
-	printf("\n duration = %s\n", head->duration);
-	printf("\n casting_time = %s\n", head->casting_time);
+	printf("---------------------------------------------------------\n");
+	printf("index = %s\n", head->index);
+	printf("name = %s\n", head->name);
+	printf("url = %s", head->url);
+	printf("range = %s\n", head->range);
+	printf("material = %s\n", head->material);
+	printf("duration = %s\n", head->duration);
+	printf("casting_time = %s\n", head->casting_time);
+	printf("---------------------------------------------------------\n");
 }
 
