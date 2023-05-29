@@ -44,15 +44,15 @@ struct Result parse(char *file)
 		  break; // Stop reading
 		}
 		parsing = buffer; // Point to buffer (reset)
-		char *token = strsep(&parsing, "\"");
-		while (token) // If token exists
+		char *key_word = strsep(&parsing, "\"");
+		while (key_word) // If key_word exists
 		{
-			token = strsep(&parsing, "\""); // Find next token
-			//printf("token = '%s'\n", token);
-			if (token != NULL) // als dit teken uberhaubt bestaat dan...
+			key_word = strsep(&parsing, "\""); // Find next key_word
+			//printf("key_word = '%s'\n", key_word);
+			if (key_word != NULL) // als dit teken uberhaubt bestaat dan...
 			{
 			
-				if (strcmp(token, "index") == 0 && results.index == NULL) 
+				if (strcmp(key_word, "index") == 0 && results.index == NULL) 
 				{
 				  char *index = strtok(&parsing[2], ",");
 				  results.index = (char*)calloc(strlen(index), sizeof(char));
@@ -60,39 +60,39 @@ struct Result parse(char *file)
 				  
 				} 
 				
-				else if (strcmp(token, "name") == 0 && results.name == NULL) 
+				else if (strcmp(key_word, "name") == 0 && results.name == NULL) 
 				{
 				  char *name = strtok(&parsing[2], ",");
 				  results.name = (char*)calloc(strlen(name), sizeof(char));
 				  strcpy(results.name, name);
 				} 
-				else if (strcmp(token, "url") == 0 && results.url == NULL) 
+				else if (strcmp(key_word, "url") == 0 && results.url == NULL) 
 				{
 				  char *url = strtok(&parsing[2], ",");
 				  results.url = (char*)calloc(strlen(url), sizeof(char));
 				  strcpy(results.url, url);
 				} 
-				else if (strcmp(token, "range") == 0) 
+				else if (strcmp(key_word, "range") == 0) 
 				{
 				  char *range = strtok(&parsing[2], ",");
 				  results.range = (char*)calloc(strlen(range), sizeof(char));
 				  strcpy(results.range, range);
 				} 
-				else if (strcmp(token, "material") == 0) 
+				else if (strcmp(key_word, "material") == 0) 
 				{
 				  char *material = strtok(&parsing[2], ",");
 				  results.material = (char*)calloc(strlen(material), sizeof(char));
 				  strcpy(results.material, material);
 				} 
 				
-				else if (strcmp(token, "duration") == 0) 
+				else if (strcmp(key_word, "duration") == 0) 
 				{
 				  char *duration = strtok(&parsing[2], ",");
 				  results.duration = (char*)calloc(strlen(duration), sizeof(char));
 				  strcpy(results.duration, duration);
 				}
 				
-				else if (strcmp(token, "casting_time") == 0) 
+				else if (strcmp(key_word, "casting_time") == 0) 
 				{
 				  char *casting_time = strtok(&parsing[2], ",");
 				  results.casting_time = (char*)calloc(strlen(casting_time), sizeof(char));
