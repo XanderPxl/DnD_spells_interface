@@ -15,6 +15,33 @@ struct Result
   char *material;
   char *duration;
   char *casting_time;
+
+  bool rituals;
+  bool concentration;
+  
+  //enum components{element1, element2, element3}components1;
+  
+  int level;
+  
+  struct school
+  {
+	  char *index;
+	  char *name;
+	  char *url;
+  }school1;
+  struct classes
+  {
+	  char *index;
+	  char *name;
+	  char *url;
+  }classes1;
+  struct subclasses
+  {
+	  char *index;
+	  char *name;
+	  char *url;
+  }subclasses1;
+  
   
 };
 
@@ -52,6 +79,7 @@ struct Result parse(char *file)
 			if (key_word != NULL) // als dit teken uberhaubt bestaat dan...
 			{
 			
+				printf("//token = %s\n//", key_word);
 				if (strcmp(key_word, "index") == 0 && results.index == NULL) 
 				{
 				  char *index = strtok(&parsing[2], ",");
@@ -99,9 +127,56 @@ struct Result parse(char *file)
 				  strcpy(results.casting_time, casting_time);
 				  
 				}
+				
+				else if (strcmp(key_word, "ritual") == 0)
+				{
+					char *ritual = strtok(&parsing[2], ",");
+					if(ritual == "false")
+					{
+						results.rituals = false;
+					}
+					 
+				}
 				 
-				
-				
+				else if (strcmp(key_word, "concentration") == 0)
+				{
+					char *concentration = strtok(&parsing[2], ",");
+					if(concentration == "false")
+					{
+						results.concentration = false;
+					}
+					 
+				}
+				else if (strcmp(key_word, "level") == 0) 
+				{
+				  char *level_str= strtok(&parsing[2], ",");
+				  results.level = atoi(level_str);
+				  
+				}
+				/*
+				else if (strcmp(key_word, "classes") == 0) 
+				{
+					printf("\nim in classes\n");
+					char *classes= strsep(&parsing, "\"");
+					classes= strsep(&parsing, "\"");
+					//classes = strtok(&parsing[2], "\n");
+					//classes = strsep(&parsing, "\"");
+						  printf("\nclasses = %s\n", classes);
+						  if (strcmp(classes, "index") == 0)
+						  {
+							  printf("\nim in index\n");
+							  char *index = strtok(&parsing[2], ",");
+							  index = strtok(&parsing[2], ",");
+							  results.classes1.index = (char*)calloc(strlen(index), sizeof(char));
+							  printf("\n****%s****\n", results.classes1.index);
+							  strcpy(results.classes1.index, index);
+						  }
+						  //results.level = atoi(level_str);
+				  
+				  
+				  
+				}
+				*/
 			}
 		}
 	}
